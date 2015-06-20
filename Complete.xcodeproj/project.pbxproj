@@ -14,6 +14,7 @@
 		3B4B21D91B351980006B69B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B4B21D81B351980006B69B6 /* Images.xcassets */; };
 		3B4B21DC1B351980006B69B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B4B21DA1B351980006B69B6 /* LaunchScreen.xib */; };
 		3B4B21E81B351980006B69B6 /* CompleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B21E71B351980006B69B6 /* CompleteTests.swift */; };
+		3B4B21F21B351E6C006B69B6 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B21F11B351E6C006B69B6 /* Tasks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		3B4B21E11B351980006B69B6 /* CompleteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompleteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4B21E61B351980006B69B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B4B21E71B351980006B69B6 /* CompleteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteTests.swift; sourceTree = "<group>"; };
+		3B4B21F11B351E6C006B69B6 /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		3B4B21CB1B351980006B69B6 /* Complete */ = {
 			isa = PBXGroup;
 			children = (
+				3B4B21F11B351E6C006B69B6 /* Tasks.swift */,
 				3B4B21CE1B351980006B69B6 /* AppDelegate.swift */,
 				3B4B21D31B351980006B69B6 /* ViewController.swift */,
 				3B4B21D51B351980006B69B6 /* Main.storyboard */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4B21F21B351E6C006B69B6 /* Tasks.swift in Sources */,
 				3B4B21D41B351980006B69B6 /* ViewController.swift in Sources */,
 				3B4B21D21B351980006B69B6 /* Complete.xcdatamodeld in Sources */,
 				3B4B21CF1B351980006B69B6 /* AppDelegate.swift in Sources */,
