@@ -14,4 +14,16 @@ class Tasks: NSManagedObject {
     @NSManaged var taskName: String
     @NSManaged var taskDescription: String
 
+    class func createNewTask(moc: NSManagedObjectContext, name: String, description: String) -> Tasks {
+        
+        let newTask = NSEntityDescription.insertNewObjectForEntityForName("Tasks", inManagedObjectContext: moc) as! Tasks
+        
+        newTask.taskName = name
+        newTask.taskDescription = description
+        
+        return newTask
+    }
+    
+    
+    
 }

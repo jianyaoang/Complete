@@ -9,33 +9,58 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
 
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var tasks = [Tasks]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let newTask = NSEntityDescription.insertNewObjectForEntityForName("Tasks", inManagedObjectContext: managedObjectContext!) as! Tasks
-        newTask.taskName = "House of Cards"
-        newTask.taskDescription = "Complete remaining episodes of House Of Cards"
+        if let managedObjectContext = self.managedObjectContext {
+            
+            var tasks = [("Cook","Make a pasta"), ("Learn a new language","Swift"), ("Workout","Run for 30 minutes"), ("Read", "Any awesome books!"), ("Practice Guitar", "To the tune of Ed Sheeran's Don't")]
+            
+            for (taskName, taskDescription) in tasks {
+                
+                Tasks.createNewTask(managedObjectContext, name: taskName, description: taskDescription)
+            }
+        }
+        
+        retrieveTasks()
         
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    func retrieveTasks() {
         
         let fetchRequest = NSFetchRequest(entityName: "Tasks")
         
-        if let fetchRequestResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Tasks] {
+        let sortDesciptorTasks = NSSortDescriptor(key: "taskName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDesciptorTasks]
+        
+        
+        if let fetchRequestResults = self.managedObjectContext?.executeFetchRequest(fetchRequest, error: nil) as? [Tasks] {
             
-            let alert = UIAlertController(title: fetchRequestResults[0].taskName, message: fetchRequestResults[0].taskDescription, preferredStyle: UIAlertControllerStyle.Alert)
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-            
+            self.tasks = fetchRequestResults
         }
+        
     }
-
-
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.tasks.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("TaskCell") as! UITableViewCell
+        
+        let tasks = self.tasks[indexPath.row]
+        
+        cell.textLabel?.text = tasks.taskName
+        return cell
+        
+    }
 }
 
